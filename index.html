@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación de Cumpleaños</title>
+  <style>
+    @font-face {
+      font-family: 'Sweet';
+      src: url('font/SweetToffee.ttf') format('truetype');
+    }
+
+    body {
+      font-family: 'Sweet', cursive;
+      background-image: url("img/fondopuntos.jpg"); 
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      color: #444;
+    }
+
+    .container {
+      max-width: 400px;
+      background: rgba(255, 240, 245, 0.9);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* === TEXTOS PERSONALIZABLES === */
+    .titulo {
+      color: #d46ba3;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .nombre {
+      color: #a64ca6;
+      font-size: 3rem;
+      margin: 5px 0;
+      letter-spacing: 2px; /* 👈 separa las letras entre sí */
+    }
+
+    .subtitulo {
+      font-size: 1.8rem;
+      margin: 15px 0;
+      color: #d46ba3;
+    }
+
+    .frase {
+      font-size: 1.7rem;
+      margin: 10px 0 20px 0;
+      color: #a64ca6;
+    }
+
+    .footer-text {
+      font-size: 1.9rem;
+      color: #d46ba3;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    /* === FOTOS === */
+    .fotos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 15px 0 20px 0;
+    }
+
+    .foto-centro {
+      width: 300px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .foto-lado {
+      width: 150px;
+      height: auto;
+      border-radius: 15px;
+      opacity: 0.9;
+    }
+
+    /* === BOTONES === */
+    button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      font-weight: bold;
+      color: #f2cdf7;
+      background: linear-gradient(135deg, #d46ba3, #a64ca6);
+      border: none;
+      border-radius: 30px;
+      font-size: 1.5rem;
+      font-family: 'Sweet', cursive; /* 👈 Aquí aplicamos la misma fuente */
+      cursor: pointer;
+      transition: transform 0.2s, opacity 0.2s;
+      letter-spacing: 2px; /* 👈 separa las letras entre sí */
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    .info {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 10px;
+      background: #ffe4f0;
+      font-size: 1.5rem;
+    }
+
+    .map-link {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 12px;
+      background: #a64ca6;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 20px;
+      font-size: 1.3rem;
+      transition: background 0.3s;
+    }
+
+    .map-link:hover {
+      background: #d46ba3;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="titulo">¡Quiero invitarte a mi cumple!</h1>
+    <h2 class="nombre">Rosalinda</h2>
+
+    <!-- Bloque de fotos -->
+    <div class="fotos">
+      <!-- si quieres imágenes a los lados, agrega aquí -->
+      <!-- <img src="img/izquierda.jpg" alt="Decoración" class="foto-lado"> -->
+      <img src="img/rosalinda2.jpg" alt="Foto de Rosalinda" class="foto-centro">
+      <!-- <img src="img/derecha.jpg" alt="Decoración" class="foto-lado"> -->
+    </div>
+
+    <p class="subtitulo">🎉 Mi primer añito 🎉</p>
+    <p class="frase">Acompáñame a celebrar este día:</p>
+
+    <!-- Botones -->
+    <button class="button" onclick="mostrarInfo('lugar')">📍 Lugar</button>
+    <div id="lugar" class="info">
+      Calle Molina Lavín 01642 Quinta Normal
+      <br>
+      <a href="https://maps.app.goo.gl/hnirDphJGa3XPZD67" target="_blank" class="map-link">
+        Ver en Google Maps
+      </a>
+    </div>
+
+    <button class="button" onclick="mostrarInfo('dia')">📅 Día</button>
+    <div id="dia" class="info">Sábado 11 de Octubre</div>
+
+    <button class="button" onclick="mostrarInfo('hora')">⏰ Hora</button>
+    <div id="hora" class="info">5:00 pm</div>
+
+    <div class="footer-text">¡Te esperamos! 💖</div>
+  </div>
+
+  <script>
+    function mostrarInfo(id) {
+      let info = document.getElementById(id);
+      info.style.display = (info.style.display === "block") ? "none" : "block";
+    }
+  </script>
+</body>
+</html>
