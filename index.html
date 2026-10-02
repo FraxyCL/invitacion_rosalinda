@@ -1,184 +1,646 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invitación de Cumpleaños</title>
-  <style>
-    @font-face {
-      font-family: 'Sweet';
-      src: url('font/SweetToffee.ttf') format('truetype');
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-      font-family: 'Sweet', cursive;
-      background-image: url("img/fondopuntos.jpg"); 
-      background-size: cover;
-      background-position: center;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      text-align: center;
-      color: #444;
-    }
+    <title>¡Feliz Cumpleaños Rosalinda!</title>
 
-    .container {
-      max-width: 400px;
-      background: rgba(255, 240, 245, 0.9);
-      padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
+    <style>
+        /* =====================================================
+           CONFIGURACIÓN FÁCIL DE IMÁGENES
+           ===================================================== */
 
-    /* === TEXTOS PERSONALIZABLES === */
-    .titulo {
-      color: #d46ba3;
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
+        :root {
 
-    .nombre {
-      color: #a64ca6;
-      font-size: 3rem;
-      margin: 5px 0;
-      letter-spacing: 2px; /* 👈 separa las letras entre sí */
-    }
+            /* Tamaño del logo principal */
+            --tamano-logo: 120%;
 
-    .subtitulo {
-      font-size: 1.8rem;
-      margin: 15px 0;
-      color: #d46ba3;
-    }
+            /* Tamaño de las dos photocards */
+            --tamano-photocard: 110%;
 
-    .frase {
-      font-size: 1.7rem;
-      margin: 10px 0 20px 0;
-      color: #a64ca6;
-    }
+            /* Tamaño del número 2 */
+            --tamano-numero: 170px;
 
-    .footer-text {
-      font-size: 1.9rem;
-      color: #d46ba3;
-      font-weight: bold;
-      margin-top: 20px;
-    }
+            /* Espacio entre las photocards */
+            --espacio-fotos: 50px;
 
-    /* === FOTOS === */
-    .fotos {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      margin: 15px 0 20px 0;
-    }
+            /* =================================================
+               COLORES
+               ================================================= */
 
-    .foto-centro {
-      width: 300px;
-      height: auto;
-      border-radius: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
+            --rosa: #e83f91;
+            --rosa-claro: #ffe5f1;
+            --rosa-suave: #fff3f8;
 
-    .foto-lado {
-      width: 150px;
-      height: auto;
-      border-radius: 15px;
-      opacity: 0.9;
-    }
+            --verde: #74b94b;
+            --amarillo: #ffd95a;
 
-    /* === BOTONES === */
-    button {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      font-weight: bold;
-      color: #f2cdf7;
-      background: linear-gradient(135deg, #d46ba3, #a64ca6);
-      border: none;
-      border-radius: 30px;
-      font-size: 1.5rem;
-      font-family: 'Sweet', cursive; /* 👈 Aquí aplicamos la misma fuente */
-      cursor: pointer;
-      transition: transform 0.2s, opacity 0.2s;
-      letter-spacing: 2px; /* 👈 separa las letras entre sí */
-    }
+            --texto: #70445a;
+            --blanco: #ffffff;
+        }
 
-    button:hover {
-      transform: scale(1.05);
-      opacity: 0.9;
-    }
 
-    .info {
-      display: none;
-      margin-top: 10px;
-      padding: 10px;
-      border-radius: 10px;
-      background: #ffe4f0;
-      font-size: 1.5rem;
-    }
+        /* =====================================================
+           CONFIGURACIÓN GENERAL
+           ================================================= */
 
-    .map-link {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 8px 12px;
-      background: #a64ca6;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 20px;
-      font-size: 1.3rem;
-      transition: background 0.3s;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    .map-link:hover {
-      background: #d46ba3;
-    }
+        body {
+            margin: 0;
 
-  </style>
+            font-family: "Trebuchet MS", Arial, sans-serif;
+
+            background-image: url("fondo.jpeg");
+
+            /* La imagen ocupa todo el ancho */
+            background-size: 100% auto;
+
+            /* Comienza desde arriba */
+            background-position: top center;
+
+            /* No se repite */
+            background-repeat: no-repeat;
+
+            /* El fondo se mueve junto con la página */
+            background-attachment: scroll;
+
+            color: var(--texto);
+
+            min-height: 100vh;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =====================================================
+           CONTENEDOR PRINCIPAL
+           ===================================================== */
+
+        .invitacion {
+            width: 100%;
+            max-width: 650px;
+
+            margin: auto;
+
+            padding: 25px 18px 50px;
+
+            text-align: center;
+
+            /* Capa suave sobre el fondo */
+            background: rgba(255, 255, 255, 0.15);
+
+            min-height: 100vh;
+        }
+
+
+
+        /* =====================================================
+           DECORACIÓN SUPERIOR
+           ===================================================== */
+
+        .decoracion-superior {
+            font-size: 28px;
+            letter-spacing: 10px;
+
+            margin-bottom: 8px;
+
+            animation: flotar 3s ease-in-out infinite;
+        }
+
+
+        /* =====================================================
+           LOGO
+           ===================================================== */
+
+        .logo-container {
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin-bottom: 20px;
+        }
+
+        .logo {
+
+            width: var(--tamano-logo);
+
+            max-width: 580px;
+
+            height: auto;
+
+            display: block;
+        }
+
+
+        /* =====================================================
+           PHOTOCARDS
+           ===================================================== */
+
+        .photocards {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: var(--espacio-fotos);
+
+            width: 100%;
+
+            margin: 10px auto 30px;
+        }
+
+        .photocard {
+
+            width: var(--tamano-photocard);
+
+            margin: auto;
+
+            border-radius: 18px;
+
+            background: white;
+
+            padding: 8px;
+
+            box-shadow:
+                0 7px 15px rgba(120, 70, 90, 0.18);
+
+            transform: rotate(-2deg);
+
+            transition: transform 0.3s ease;
+        }
+
+        .photocard:nth-child(2) {
+            transform: rotate(2deg);
+        }
+
+        .photocard:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+
+        /* Imagen real */
+        .photocard img {
+
+            width: 100%;
+
+            height: auto;
+
+            display: block;
+
+            border-radius: 12px;
+        }
+
+
+        /* =====================================================
+           TEXTO DE INVITACIÓN
+           ===================================================== */
+
+        .frase {
+            font-size: 22px;
+            line-height: 1.4;
+            font-weight: bold;
+
+            margin: 15px 10px 12px;
+
+            color: var(--texto);
+
+            /* Fondo semitransparente */
+            background: rgba(255, 255, 255, 0.88);
+
+            /* Bordes redondeados */
+            border-radius: 18px;
+
+            /* Espacio interno */
+            padding: 14px 18px;
+
+            /* Borde */
+            border: 2px solid #ffe0ed;
+
+            /* Sombra */
+            box-shadow:
+                0 5px 12px rgba(120, 70, 90, 0.12);
+        }
+
+        .frase span {
+            color: var(--rosa);
+        }
+
+
+        /* =====================================================
+           NÚMERO 2
+           ===================================================== */
+
+        .numero-container {
+
+            margin: 5px auto 25px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+        }
+
+        .numero {
+
+            width: var(--tamano-numero);
+
+            height: auto;
+
+            display: block;
+        }
+
+
+        /* =====================================================
+           INFORMACIÓN DEL EVENTO
+           ===================================================== */
+
+        .informacion {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+
+            margin-top: 15px;
+        }
+
+
+        .dato {
+
+            display: flex;
+
+            align-items: center;
+
+            text-align: left;
+
+            background: rgba(255, 255, 255, 0.88);
+
+            border-radius: 18px;
+
+            padding: 15px 18px;
+
+            box-shadow:
+                0 5px 12px rgba(120, 70, 90, 0.12);
+
+            border: 2px solid #ffe0ed;
+
+        }
+
+
+        .dato-icono {
+
+            font-size: 30px;
+
+            width: 48px;
+
+            text-align: center;
+
+            margin-right: 10px;
+        }
+
+
+        .dato-texto {
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .dato-titulo {
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            text-transform: uppercase;
+
+            color: var(--rosa);
+
+            letter-spacing: 1px;
+        }
+
+
+        .dato-info {
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            margin-top: 2px;
+        }
+
+
+        /* =====================================================
+           BOTÓN DEL MAPA
+           ===================================================== */
+
+        .boton-mapa {
+
+            display: inline-block;
+
+            margin-top: 8px;
+
+            padding: 8px 14px;
+
+            border-radius: 20px;
+
+            background: var(--rosa);
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .boton-mapa:hover {
+            transform: scale(1.04);
+
+            background: #d72f7f;
+        }
+
+
+        /* =====================================================
+           MENSAJE FINAL
+           ===================================================== */
+
+        .mensaje-final {
+
+            margin-top: 35px;
+
+            background: #ffffff;
+
+            border-radius: 25px;
+
+            padding: 22px 18px;
+
+            box-shadow:
+                0 7px 15px rgba(120, 70, 90, 0.13);
+
+            border: 3px dashed #f4a5c6;
+        }
+
+
+        .mensaje-final h2 {
+
+            color: var(--rosa);
+
+            font-size: 25px;
+
+            margin-bottom: 8px;
+        }
+
+        .mensaje-final p {
+
+            font-size: 16px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           DECORACIÓN INFERIOR
+           ===================================================== */
+
+        .decoracion-inferior {
+
+            margin-top: 25px;
+
+            font-size: 28px;
+
+            letter-spacing: 8px;
+        }
+
+
+        /* =====================================================
+           ANIMACIÓN
+           ===================================================== */
+
+        @keyframes flotar {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+
+        }
+
+
+        /* =====================================================
+           AJUSTES PARA CELULARES MUY PEQUEÑOS
+           ===================================================== */
+
+        @media (max-width: 380px) {
+
+            .invitacion {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .frase {
+                font-size: 19px;
+            }
+
+            .dato-info {
+                font-size: 15px;
+            }
+
+            .dato-icono {
+                font-size: 26px;
+                width: 40px;
+            }
+
+        }
+    </style>
 </head>
+
+
 <body>
-  <div class="container">
-    <h1 class="titulo">¡Quiero invitarte a mi cumple!</h1>
-    <h2 class="nombre">Rosalinda</h2>
 
-    <!-- Bloque de fotos -->
-    <div class="fotos">
-      <!-- si quieres imágenes a los lados, agrega aquí -->
-      <!-- <img src="img/izquierda.jpg" alt="Decoración" class="foto-lado"> -->
-      <img src="img/rosalinda2.jpg" alt="Foto de Rosalinda" class="foto-centro">
-      <!-- <img src="img/derecha.jpg" alt="Decoración" class="foto-lado"> -->
-    </div>
 
-    <p class="subtitulo">🎉 Mi primer añito 🎉</p>
-    <p class="frase">Acompáñame a celebrar este día:</p>
+    <main class="invitacion">
 
-    <!-- Botones -->
-    <button class="button" onclick="mostrarInfo('lugar')">📍 Lugar</button>
-    <div id="lugar" class="info">
-      Calle Molina Lavín 01642 Quinta Normal
-      <br>
-      <a href="https://maps.app.goo.gl/hnirDphJGa3XPZD67" target="_blank" class="map-link">
-        Ver en Google Maps
-      </a>
-    </div>
 
-    <button class="button" onclick="mostrarInfo('dia')">📅 Día</button>
-    <div id="dia" class="info">Sábado 11 de Octubre</div>
+        <!-- =================================================
+             DECORACIÓN
+             ================================================= -->
 
-    <button class="button" onclick="mostrarInfo('hora')">⏰ Hora</button>
-    <div id="hora" class="info">5:00 pm</div>
+        <div class="decoracion-superior">
+            🌸 🌿 🌸
+        </div>
 
-    <div class="footer-text">¡Te esperamos! 💖</div>
-  </div>
 
-  <script>
-    function mostrarInfo(id) {
-      let info = document.getElementById(id);
-      info.style.display = (info.style.display === "block") ? "none" : "block";
-    }
-  </script>
+        <!-- =================================================
+             LOGO PRINCIPAL
+             
+             CAMBIAR:
+             logo.png
+             por el nombre de tu archivo
+             ================================================= -->
+
+        <div class="logo-container">
+
+            <!-- Por ahora usamos un emoji -->
+            <div style="font-size: 90px;">
+                <img src="logo.png" class="logo" alt="Feliz Cumpleaños Rosalinda">
+            </div>
+
+        </div>
+
+        <!-- =================================================
+             DOS PHOTOCARDS
+             ================================================= -->
+
+        <div class="photocards">
+
+            <!-- PHOTOCARD 1 -->
+
+            <div class="photocard">
+                <div style="font-size: 110px; padding: 25px 0;">
+                    <img src="photocard1.png" alt="Rosalinda">
+                </div>
+            </div>
+
+            <!-- PHOTOCARD 2 -->
+
+            <div class="photocard">
+                <div style="font-size: 110px; padding: 25px 0;">
+                    <img src="photocard2.png" alt="Rosalinda">
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             FRASE
+             ================================================= -->
+
+        <p class="frase">
+
+            Ven a celebrar conmigo
+
+            <span>mi cumpleaños número...</span>
+
+        </p>
+
+
+        <!-- =================================================
+             NÚMERO 2
+             ================================================= -->
+
+        <div class="numero-container">
+            <div style="font-size: 150px;">
+                <img src="numero2.png" class="numero" alt="Número 2">
+            </div>
+        </div>
+
+
+        <!-- =================================================
+             INFORMACIÓN
+             ================================================= -->
+
+        <section class="informacion">
+
+
+            <!-- FECHA -->
+
+            <div class="dato">
+
+                <div class="dato-icono">
+                    📅
+                </div>
+                <div class="dato-texto">
+                    <div class="dato-titulo">
+                        Día
+                    </div>
+                    <div class="dato-info">
+                        Sábado 17 de octubre
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- HORA -->
+
+            <div class="dato">
+                <div class="dato-icono">
+                    🕐
+                </div>
+                <div class="dato-texto">
+                    <div class="dato-titulo">
+                        Hora
+                    </div>
+                    <div class="dato-info">
+                        16:30 horas
+                    </div>
+                </div>
+            </div>
+
+            <!-- LUGAR -->
+
+            <div class="dato">
+                <div class="dato-icono">
+                    📍
+                </div>
+                <div class="dato-texto">
+                    <div class="dato-titulo">
+                        Lugar
+                    </div>
+                    <div class="dato-info">
+                        Calle Molina Lavín 01642 Quinta Normal
+                    </div>
+                    <a href="https://www.google.com/maps/place/Molina+Lav%C3%ADn+01642,+8500034+Santiago,+Quinta+Normal,+Regi%C3%B3n+Metropolitana/@-33.4300128,-70.7098927,19z/data=!4m6!3m5!1s0x9662c40c6a4dbf3d:0x337af4ab3539e444!8m2!3d-33.4299848!4d-70.7095869!16s%2Fg%2F11l76vk7w8?entry=tts&g_ep=EgoyMDI1MDkyNC4wIPu8ASoASAFQAw%3D%3D&skid=f7537fc8-80de-4f96-899a-71cea2532618"
+                        class="boton-mapa">
+                        📍 Ver ubicación
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =================================================
+             MENSAJE FINAL
+             ================================================= -->
+
+        <div class="mensaje-final">
+            <h2>
+                🌸 ¡Te esperamos! 🌸
+            </h2>
+            <p>
+                Será un día muy especial y nos encantará
+                compartirlo contigo.
+            </p>
+        </div>
+        <!-- =================================================
+             DECORACIÓN INFERIOR
+             ================================================= -->
+
+        <div class="decoracion-inferior">
+            🌷 🦋 🌷
+        </div>
+    </main>
 </body>
+
 </html>
