@@ -475,6 +475,40 @@
             box-sizing: border-box;
         }
 
+        #boton-musica {
+            position: fixed;
+
+            top: 15px;
+            right: 15px;
+
+            width: 48px;
+            height: 48px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.9);
+
+            box-shadow:
+                0 4px 10px rgba(120, 70, 90, 0.2);
+
+            font-size: 23px;
+
+            cursor: pointer;
+
+            z-index: 1000;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            transition: transform 0.2s ease;
+        }
+
+        #boton-musica:hover {
+            transform: scale(1.08);
+        }
+
 
         /* =====================================================
            ANIMACIÓN
@@ -526,7 +560,13 @@
 
 
 <body>
+    <audio id="musica" loop>
+        <source src="cancion.mp3" type="audio/mpeg">
+    </audio>
 
+    <button id="boton-musica" aria-label="Reproducir música">
+        🎵
+    </button>
 
     <main class="invitacion">
 
@@ -680,7 +720,69 @@
         <div class="decoracion-inferior">
             🌷 🦋 🌷
         </div>
+
+
     </main>
+
+    <script>
+
+    const musica = document.getElementById("musica");
+    const botonMusica = document.getElementById("boton-musica");
+
+    let reproduciendo = false;
+
+
+    botonMusica.addEventListener("click", () => {
+
+        if (reproduciendo) {
+
+            musica.pause();
+
+            botonMusica.textContent = "🔇";
+
+            reproduciendo = false;
+
+        } else {
+
+            musica.play();
+
+            botonMusica.textContent = "🎵";
+
+            reproduciendo = true;
+
+        }
+
+    });
+
+
+    // Intentar reproducir automáticamente
+    window.addEventListener("load", () => {
+
+        musica.volume = 0.5;
+
+        musica.play()
+            .then(() => {
+
+                reproduciendo = true;
+
+                botonMusica.textContent = "🎵";
+
+            })
+            .catch(() => {
+
+                // El navegador bloqueó el autoplay.
+                // La música comenzará al tocar el botón.
+
+                reproduciendo = false;
+
+                botonMusica.textContent = "🔇";
+
+            });
+
+    });
+
+</script>
+
 </body>
 
 </html>
