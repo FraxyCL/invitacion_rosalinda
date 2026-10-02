@@ -79,7 +79,7 @@
 
             background-repeat: repeat-y;
 
-            background-attachment: scr;
+            background-attachment: scroll;
 
             color: var(--texto);
 
@@ -162,32 +162,30 @@
            ===================================================== */
 
         .photocards {
-
             display: grid;
 
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
 
             gap: var(--espacio-fotos);
 
             width: 100%;
+            max-width: 100%;
 
             margin: 10px auto 30px;
         }
 
         .photocard {
-
             width: var(--tamano-photocard);
 
             margin: auto;
 
-            border-radius: 18px;
+            background: transparent;
 
-            background: white;
+            padding: 0;
 
-            padding: 8px;
+            border: none;
 
-            box-shadow:
-                0 7px 15px rgba(120, 70, 90, 0.18);
+            box-shadow: none;
 
             transform: rotate(-2deg);
 
@@ -443,6 +441,40 @@
             letter-spacing: 8px;
         }
 
+        /* =====================================================
+   IMAGEN FINAL
+   ===================================================== */
+
+        .imagen-final {
+            width: 100%;
+            max-width: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin: 30px auto 20px;
+            padding: 0;
+
+            box-sizing: border-box;
+
+            overflow: hidden;
+        }
+
+        .imagen-final img {
+            display: block;
+
+            width: 700px;
+            max-width: 85%;
+
+            height: auto;
+
+            margin: 0 auto;
+            padding: 0;
+
+            box-sizing: border-box;
+        }
+
 
         /* =====================================================
            ANIMACIÓN
@@ -485,6 +517,8 @@
                 font-size: 26px;
                 width: 40px;
             }
+
+
 
         }
     </style>
@@ -532,17 +566,11 @@
             <!-- PHOTOCARD 1 -->
 
             <div class="photocard">
-                <div style="font-size: 110px; padding: 25px 0;">
-                    <img src="photocard1.png" alt="Rosalinda">
-                </div>
+                <img src="photocard1.png" alt="Rosalinda">
             </div>
 
-            <!-- PHOTOCARD 2 -->
-
             <div class="photocard">
-                <div style="font-size: 110px; padding: 25px 0;">
-                    <img src="photocard2.png" alt="Rosalinda">
-                </div>
+                <img src="photocard2.png" alt="Rosalinda">
             </div>
 
 
@@ -637,17 +665,13 @@
 
 
         <!-- =================================================
-             MENSAJE FINAL
+             imagen FINAL
              ================================================= -->
 
-        <div class="mensaje-final">
-            <h2>
-                🌸 ¡Te esperamos! 🌸
-            </h2>
-            <p>
-                Será un día muy especial y nos encantará
-                compartirlo contigo.
-            </p>
+        <div class="imagen-final">
+
+            <img src="teesperamos.png" alt="Te esperamos">
+
         </div>
         <!-- =================================================
              DECORACIÓN INFERIOR
